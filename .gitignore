@@ -1,0 +1,36 @@
+# Python
+__pycache__
+*.pyc
+*.pyo
+*.pyd
+*.db
+*.sqlite3
+*.log
+*.pot
+*.mo
+*.po
+build/
+dist/
+*.egg-info/
+eggs/
+parts/
+var/
+sdist/
+wheels/
+pip-wheel-metadata/
+venv/
+env/
+.pytest_cache/
+
+# Конфиги
+.env
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Операционная система
+.DS_Store
+Thumbs.db
