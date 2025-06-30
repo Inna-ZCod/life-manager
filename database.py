@@ -99,5 +99,29 @@ def init_db():
         )
     ''')
 
+    # Таблица для самообучения (модуль обучения) на основе интервального повторения
+    cursor.execute('''
+        CREATE TABLE IF NOT EXISTS learning_cards (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            category TEXT NOT NULL,          -- python / sql / git...
+            question TEXT NOT NULL,
+            answer TEXT NOT NULL,
+            last_review TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+            next_review TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+            review_count INTEGER DEFAULT 0,
+            ease REAL DEFAULT 2.5           -- коэффициент запоминания (Anki-style)
+    ''')
+
+    # Таблица для хранения истории ответов (модуль обучения)
+    cursor.execute('''
+        CREATE TABLE IF NOT EXISTS card_reviews (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            card_id INTEGER REFERENCES learning_cards(id),
+            user_answer TEXT,
+            is_correct BOOLEAN,
+            reviewed_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+        )
+    ''')
+
     conn.commit()
     conn.close()

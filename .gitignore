@@ -9,6 +9,7 @@ __pycache__
 *.pot
 *.mo
 *.po
+*.tmp
 build/
 dist/
 *.egg-info/
@@ -34,3 +35,6 @@ env/
 # Операционная система
 .DS_Store
 Thumbs.db
+
+# База данных
+task_manager.db
