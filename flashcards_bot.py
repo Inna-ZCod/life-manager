@@ -7,18 +7,15 @@ import os
 from dotenv import load_dotenv
 import logging
 
-# Настройки логирования
-logging.basicConfig(
-    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
-    level=logging.INFO
-)
+# Настройка логирования
+logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s', level=logging.INFO)
 logger = logging.getLogger(__name__)
 
 # Загрузка токена из .env
 load_dotenv()
 bot_token = os.getenv("TELEGRAM_BOT_TOKEN")
 
-# Константы
+# Количество карточек в одной серии
 CARDS_PER_SESSION = 5
 
 
@@ -29,51 +26,57 @@ def get_db():
     return conn
 
 
-# Получаем блок карточек для серии (с учетом ближайших карточек, если готовых мало)
+# Получение набора карточек для сессии
 def get_batch_of_cards(user_id, count=CARDS_PER_SESSION):
     conn = get_db()
     cursor = conn.cursor()
     today = datetime.now().isoformat()
 
-    # Сначала берем карточки, готовые к повторению
+    # Берём карточки, готовые к просмотру
     cursor.execute('''
         SELECT * FROM learning_cards
         WHERE next_review <= ?
         ORDER BY next_review ASC, RANDOM()
         LIMIT ?
     ''', (today, count))
-    cards = cursor.fetchall()
+    ready_cards = cursor.fetchall()
 
-    # Если готовых карточек меньше, чем нужно, добираем ближайшие
-    if len(cards) < count:
-        remaining = count - len(cards)
+    # Если готовых карточек недостаточно, добавляем ближайшие карточки
+    if len(ready_cards) < count:
+        remaining = count - len(ready_cards)
         cursor.execute('''
             SELECT * FROM learning_cards
             WHERE next_review > ?
             ORDER BY next_review ASC
             LIMIT ?
         ''', (today, remaining))
-        additional_cards = cursor.fetchall()
-        cards.extend(additional_cards)
+        near_future_cards = cursor.fetchall()
+        ready_cards.extend(near_future_cards)
 
     conn.close()
-    return [dict(card) for card in cards]
+    return [dict(card) for card in ready_cards]
 
 
-# Создаем кнопку "Продолжить"
+# Получение ближайших карточек вне зависимости от срока повторения
+def get_nearby_cards(user_id, count=CARDS_PER_SESSION):
+    conn = get_db()
+    cursor = conn.cursor()
+    cursor.execute('''
+        SELECT * FROM learning_cards
+        ORDER BY next_review ASC
+        LIMIT ?
+    ''', (count,))
+    nearby_cards = cursor.fetchall()
+    conn.close()
+    return [dict(card) for card in nearby_cards]
+
+
+# Создание кнопки "Продолжить"
 def get_continue_button():
-    return InlineKeyboardMarkup([
-        [InlineKeyboardButton("➡️ Продолжить", callback_data="continue")]
-    ])
+    return InlineKeyboardMarkup([[InlineKeyboardButton("➡️ Продолжить", callback_data="continue")]])
 
 
-# Начало работы
-async def start(update: Update, context):
-    await send_message(update, "Добро пожаловать в ваш мини-курс программирования!")
-    await start_new_session(update, context)
-
-
-# Универсальная функция отправки сообщений
+# Отправка сообщения пользователю
 async def send_message(update, text, reply_markup=None):
     if update.callback_query:
         await update.callback_query.message.reply_text(text, reply_markup=reply_markup)
@@ -81,37 +84,41 @@ async def send_message(update, text, reply_markup=None):
         await update.message.reply_text(text, reply_markup=reply_markup)
 
 
-# Начинаем новую сессию
+# Начало работы бота
+async def start(update: Update, context):
+    await send_message(update, "Добро пожаловать в вашу тренировочную сессию!")
+    await start_new_session(update, context)
+
+
+# Запуск новой сессии карточек
 async def start_new_session(update: Update, context):
     try:
         user_id = update.effective_user.id
         queue = get_batch_of_cards(user_id)
 
+        # Если нет готовых карточек на сегодня, используем ближайший доступные
         if not queue:
-            await send_message(update, "На сегодня все карточки пройдены!")
-            return
+            queue = get_nearby_cards(user_id)
+            if not queue:
+                await send_message(update, "Все карточки временно исчерпаны. Попробуйте позже.")
+                return
 
         context.user_data["queue"] = queue
         context.user_data["session_stats"] = {"correct": 0, "total": 0}
-        await show_card(update, context)
+        await show_next_card_in_series(update, context)
 
     except Exception as e:
         logger.error(f"Ошибка в start_new_session: {e}")
-        await send_message(
-            update,
-            "Произошла ошибка при загрузке карточек.",
-            reply_markup=get_continue_button()
-        )
+        await send_message(update, "Произошла ошибка при загрузке карточек.")
 
 
-# Показываем карточку пользователю
-async def show_card(update: Update, context):
+# Отображает очередную карточку в текущей серии
+async def show_next_card_in_series(update: Update, context):
     try:
         queue = context.user_data.get("queue", [])
 
-        # Если серия закончилась, показываем статистику
         if not queue:
-            await finish_session(update, context)
+            await finish_current_series(update, context)
             return
 
         current_card = queue.pop(0)
@@ -123,72 +130,52 @@ async def show_card(update: Update, context):
         buttons = []
 
         for opt in options:
-            buttons.append(
-                [InlineKeyboardButton(opt['answer_text'], callback_data=f"{current_card['id']},{opt['answer_text']}")])
+            buttons.append([InlineKeyboardButton(opt['answer_text'],
+                                                 callback_data=f"{current_card['id']},{opt['answer_text']}"), ])
             if opt['is_correct']:
                 correct_answer = opt['answer_text']
 
         reply_markup = InlineKeyboardMarkup(buttons)
         context.user_data["correct_answer"] = correct_answer
 
-        await send_message(update, f"🧠 {current_card['question']}", reply_markup=reply_markup)
+        await send_message(update, f"🔍 Вопрос: {current_card['question']}", reply_markup=reply_markup)
 
     except Exception as e:
-        logger.error(f"Ошибка в show_card: {e}")
-        await send_message(
-            update,
-            "Произошла ошибка при показе карточки.",
-            reply_markup=get_continue_button()
-        )
+        logger.error(f"Ошибка в show_next_card_in_series: {e}")
+        await send_message(update, "Проблема при показе следующей карточки.")
 
 
-# Завершение сессии и вывод статистики
-async def finish_session(update: Update, context):
-    stats = context.user_data.get("session_stats", {"correct": 0, "total": 0})
-    percent = stats["correct"] / stats["total"] * 100 if stats["total"] > 0 else 0
+# Завершение текущей серии и вывод статистики
+async def finish_current_series(update: Update, context):
+    session_stats = context.user_data.get("session_stats", {"correct": 0, "total": 0})
+    total_answers = session_stats["total"]
+    correct_answers = session_stats["correct"]
+    percentage = round((correct_answers / total_answers) * 100, 1) if total_answers > 0 else 0
 
-    message = f"📊 Серия из {stats['total']} карточек завершена!\n"
-    message += f"Правильных ответов: {stats['correct']} ({percent:.1f}%)"
-
-    if percent >= 80:
-        message += "\n\n✨ Отличный результат! Так держать!"
-    elif percent >= 50:
-        message += "\n\n🫶 Хорошо, но есть куда расти!"
-    else:
-        message += "\n\n💪 Не переживай! Следующая серия будет лучше!"
-
-    await send_message(
-        update,
-        message,
-        reply_markup=get_continue_button()
+    message = (
+        f"📊 Ваша сессия из {total_answers} карточек завершена.\n"
+        f"Правильные ответы: {correct_answers}/{total_answers} ({percentage}%).\n\n"
     )
 
+    if percentage >= 80:
+        message += "🎉 Отличный результат!"
+    elif percentage >= 50:
+        message += "👍 Хорошее начало, продолжайте в том же духе."
+    else:
+        message += "🚀 Ничего страшного, попробуем ещё раз!"
 
-# Получаем варианты ответов для карточки
-def get_options(card_id):
-    conn = get_db()
-    cursor = conn.cursor()
-    cursor.execute("SELECT answer_text, is_correct FROM card_options WHERE card_id = ?", (card_id,))
-    options = cursor.fetchall()
-    conn.close()
-
-    if not options:
-        return [{"answer_text": "Нет вариантов", "is_correct": False}]
-
-    return [dict(option) for option in options]
+    await send_message(update, message, reply_markup=get_continue_button())
 
 
-# Обработка нажатия на кнопку
+# Обработчик выбора ответа на карточку
 async def handle_answer(update: Update, context):
     query = update.callback_query
     await query.answer()
 
-    # Обработка кнопки "Продолжить"
     if query.data == "continue":
         await start_new_session(update, context)
         return
 
-    # Обработка ответа на карточку
     data = query.data.split(',')
     card_id = int(data[0])
     user_answer = data[1]
@@ -196,34 +183,33 @@ async def handle_answer(update: Update, context):
     correct_answer = context.user_data.get("correct_answer", "")
     is_correct = (user_answer == correct_answer)
 
-    # Сохраняем результат
+    # Сохраняем результат проверки
     save_review(card_id, user_answer, is_correct)
 
-    # Обновляем статистику серии
-    stats = context.user_data.get("session_stats", {"correct": 0, "total": 0})
+    # Обновляем статистику сессии
+    session_stats = context.user_data.get("session_stats", {"correct": 0, "total": 0})
     if is_correct:
-        stats["correct"] += 1
-    stats["total"] += 1
-    context.user_data["session_stats"] = stats
+        session_stats["correct"] += 1
+    session_stats["total"] += 1
+    context.user_data["session_stats"] = session_stats
 
-    # Выводим объяснение
+    # Сообщаем пользователю результат
     explanation = get_explanation(card_id)
     if is_correct:
-        message = f"✅ Отлично! Правильный ответ: {correct_answer}\n\n{explanation}"
+        message = f"✅ Верно! Ваш ответ: '{user_answer}'\n\n{explanation}"
     else:
-        message = f"❌ Неправильно. Правильный ответ: {correct_answer}\n\n{explanation}"
+        message = f"❌ К сожалению, неверно. Правильный ответ: '{correct_answer}'\n\n{explanation}"
 
-    await query.edit_message_text(text=message, reply_markup=get_continue_button())
+    await query.edit_message_text(message, reply_markup=get_continue_button())
 
-    # Обновляем интервал повторения
+    # Обновляем интервал повторения карточки
     update_card_review_time(card_id, is_correct)
 
 
-# Обновляем время следующего повторения карточки
+# Обновление интервала повторения карточки
 def update_card_review_time(card_id, is_correct):
     conn = get_db()
     cursor = conn.cursor()
-
     cursor.execute("SELECT ease, review_count FROM learning_cards WHERE id = ?", (card_id,))
     card = cursor.fetchone()
 
@@ -240,22 +226,36 @@ def update_card_review_time(card_id, is_correct):
         UPDATE learning_cards 
         SET ease = ?, review_count = review_count + 1, next_review = ?
         WHERE id = ?
-    ''', (new_ease, next_review, card_id))
+    ''', (new_ease, next_review.isoformat(), card_id))
     conn.commit()
     conn.close()
 
 
-# Функция получения объяснения
+# Получение варианта ответа
+def get_options(card_id):
+    conn = get_db()
+    cursor = conn.cursor()
+    cursor.execute("SELECT answer_text, is_correct FROM card_options WHERE card_id = ?", (card_id,))
+    options = cursor.fetchall()
+    conn.close()
+
+    if not options:
+        return [{"answer_text": "Нет вариантов", "is_correct": False}]
+
+    return [dict(option) for option in options]
+
+
+# Получение объяснения
 def get_explanation(card_id):
     conn = get_db()
     cursor = conn.cursor()
     cursor.execute("SELECT explanation FROM learning_cards WHERE id = ?", (card_id,))
-    result = cursor.fetchone()["explanation"]
+    result = cursor.fetchone()
     conn.close()
-    return result
+    return result["explanation"]
 
 
-# Сохраняем результат в историю
+# Сохранение истории проверок
 def save_review(card_id, user_answer, is_correct):
     conn = get_db()
     cursor = conn.cursor()
@@ -267,10 +267,11 @@ def save_review(card_id, user_answer, is_correct):
     conn.close()
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     application = ApplicationBuilder().token(bot_token).build()
     application.add_handler(CommandHandler('start', start))
     application.add_handler(CallbackQueryHandler(handle_answer))
     application.run_polling(drop_pending_updates=True)
 
 
+# Работает, но не делит на сессии и не показывает статистику
