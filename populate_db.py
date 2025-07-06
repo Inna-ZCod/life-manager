@@ -1,0 +1,67 @@
+
+# Добавление карточек в базу данных из файлов json (для серверной базы данных)
+
+import os
+import json
+import sqlite3
+from datetime import datetime
+
+def get_db():
+    return sqlite3.connect('task_manager.db')
+
+def load_json_file(filename):
+    with open(filename, "r", encoding="utf-8") as f:
+        return json.load(f)
+
+def populate_cards(cards):
+    conn = get_db()
+    cursor = conn.cursor()
+
+    for card in cards:
+        # Проверяем, существует ли такая же карточка
+        cursor.execute("SELECT id FROM learning_cards WHERE question = ?", (card["question"],))
+        existing = cursor.fetchone()
+
+        if existing:
+            print(f"🔁 Уже есть карточка: {card['question']}")
+            continue
+
+        # Добавляем карточку
+        cursor.execute('''
+            INSERT INTO learning_cards 
+            (category, question, explanation)
+            VALUES (?, ?, ?)
+        ''', (
+            card["category"],
+            card["question"],
+            card.get("explanation", "")
+        ))
+
+        card_id = cursor.lastrowid
+
+        # Добавляем варианты ответов
+        for option in card.get("options", []):
+            cursor.execute('''
+                INSERT INTO card_options 
+                (card_id, answer_text, is_correct)
+                VALUES (?, ?, ?)
+            ''', (
+                card_id,
+                option["text"][:30],
+                option["is_correct"]
+            ))
+
+    conn.commit()
+    conn.close()
+    print(f"✅ Добавлено {len(cards)} новых карточек")
+
+if __name__ == "__main__":
+    # Путь к папке с JSON-файлами
+    cards_dir = "cards"
+    files = [f for f in os.listdir(cards_dir) if f.endswith(".json")]
+
+    for file in files:
+        print(f"🔄 Загружаем файл: {file}")
+        full_path = os.path.join(cards_dir, file)
+        cards = load_json_file(full_path)
+        populate_cards(cards)

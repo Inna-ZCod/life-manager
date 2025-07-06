@@ -1,0 +1,1460 @@
+[
+{
+    "category": "python",
+    "question": "Что выведет этот код?\n\nx = 5\nif x > 3:\n    print('Yes')\nelse:\n    print('No')",
+    "explanation": "Давай разберёмся вместе 🫶 У нас есть переменная x = 5. В условии проверяется, больше ли она 3 — да, это верно. Значит, выполнится блок if, и на экране появится 'Yes'. Это как сказать: «Если погода хорошая — идём гулять». Погода хорошая → идём!",
+    "options": [
+      {"text": "'Yes'", "is_correct": true},
+      {"text": "'No'", "is_correct": false},
+      {"text": "Ошибка", "is_correct": false},
+      {"text": "Ничего", "is_correct": false}
+    ]
+},
+
+    {
+        "category": "python",
+        "question": "Как создать переменную с целым числом?",
+        "explanation": "Целые числа (`int`) — это числа без дробной части, например, 42 или -7. Просто присвой значение переменной: `x = 10`. 🎯 Важно: не используй кавычки, иначе это станет строкой!",
+        "options": [
+            {"text": "x = 10", "is_correct": true},
+            {"text": "x = '10'", "is_correct": false},
+            {"text": "x = 10.0", "is_correct": false},
+            {"text": "x = True", "is_correct": false}
+        ]
+    },
+    {
+        "category": "python",
+        "question": "Какой тип у `x = 'Hello'`?",
+        "explanation": "Строки (`str`) — это текст в кавычках (одинарных или двойных). Они используются для работы с текстом: `name = 'Анна'`, `message = \"Привет\"`. 📜 Помни: даже число в кавычках — это строка!",
+        "options": [
+            {"text": "str", "is_correct": true},
+            {"text": "int", "is_correct": false},
+            {"text": "list", "is_correct": false},
+            {"text": "bool", "is_correct": false}
+        ]
+    },
+    {
+        "category": "python",
+        "question": "Что выведет `print(type(3.14))`?",
+        "explanation": "`type()` показывает тип данных. Числа с точкой (даже если `.0`) — это `float`. Например, `5.0`, `-0.001`. 🧐 Важно: `3` — это `int`, а `3.0` — уже `float`!",
+        "options": [
+            {"text": "<class 'float'>", "is_correct": true},
+            {"text": "<class 'int'>", "is_correct": false},
+            {"text": "<class 'str'>", "is_correct": false},
+            {"text": "Ошибка", "is_correct": false}
+        ]
+    },
+    {
+        "category": "python",
+        "question": "Как преобразовать строку '5' в число?",
+        "explanation": "Используй `int()` для целых чисел или `float()` для дробных. Например: `int('5') → 5`, `float('3.14') → 3.14`. ⚠️ Будь осторожен: `int('5.5')` вызовет ошибку!",
+        "options": [
+            {"text": "int('5')", "is_correct": true},
+            {"text": "str(5)", "is_correct": false},
+            {"text": "float(5)", "is_correct": false},
+            {"text": "'5' * 1", "is_correct": false}
+        ]
+    },
+    {
+        "category": "python",
+        "question": "Что вернёт `bool('False')`?",
+        "explanation": "Любая непустая строка в Python преобразуется в `True`, даже если она содержит 'False'! 🎭 Пустая строка (`''`) даст `False`. Аналогично: `bool(0) → False`, `bool(1) → True`.",
+        "options": [
+            {"text": "True", "is_correct": true},
+            {"text": "False", "is_correct": false},
+            {"text": "Ошибка", "is_correct": false},
+            {"text": "None", "is_correct": false}
+        ]
+    },
+    {
+        "category": "python",
+        "question": "Как проверить тип переменной?",
+        "explanation": "Используй `type(x)` или `isinstance(x, тип)`. Например: `type(10) → <class 'int'>`, `isinstance('hi', str) → True`. 🔍 `isinstance()` удобен для проверки наследования.",
+        "options": [
+            {"text": "type(x)", "is_correct": true},
+            {"text": "x.type()", "is_correct": false},
+            {"text": "check_type(x)", "is_correct": false},
+            {"text": "x == type", "is_correct": false}
+        ]
+    },
+    {
+        "category": "python",
+        "question": "Что такое None?",
+        "explanation": "`None` — это специальный тип, означающий «ничего». Он используется, когда нужно показать отсутствие значения. 🌌 Например, функция без `return` возвращает `None`. Это не то же самое, что `False` или `0`!",
+        "options": [
+            {"text": "Отсутствие значения", "is_correct": true},
+            {"text": "Пустая строка", "is_correct": false},
+            {"text": "Число 0", "is_correct": false},
+            {"text": "Ложь (False)", "is_correct": false}
+        ]
+    },
+    {
+        "category": "python",
+        "question": "Как создать пустой список?",
+        "explanation": "Пустой список можно создать так: `lst = []` или `lst = list()`. 📦 Списки изменяемы (mutable) и могут содержать элементы разных типов. Например: `[1, 'a', True]`.",
+        "options": [
+            {"text": "lst = []", "is_correct": true},
+            {"text": "lst = {}", "is_correct": false},
+            {"text": "lst = ()", "is_correct": false},
+            {"text": "lst = None", "is_correct": false}
+        ]
+    },
+    {
+        "category": "python",
+        "question": "Что выведет `print(2 + '2')`?",
+        "explanation": "Ошибка! 🚨 Python не может сложить число (`int`) и строку (`str`). Нужно явное преобразование: `2 + int('2') → 4` или `str(2) + '2' → '22'`. Это частая ошибка!",
+        "options": [
+            {"text": "Ошибка", "is_correct": true},
+            {"text": "4", "is_correct": false},
+            {"text": "'22'", "is_correct": false},
+            {"text": "'4'", "is_correct": false}
+        ]
+    },
+    {
+        "category": "python",
+        "question": "Как узнать длину строки?",
+        "explanation": "Функция `len()` возвращает длину строки (и других коллекций). Например: `len('Привет') → 6` (кириллица считается за 1 символ). 📏 Работает и для списков: `len([1, 2]) → 2`.",
+        "options": [
+            {"text": "len(s)", "is_correct": true},
+            {"text": "s.length()", "is_correct": false},
+            {"text": "length(s)", "is_correct": false},
+            {"text": "s.count()", "is_correct": false}
+        ]
+    },
+    {
+        "category": "python",
+        "question": "Что выведет код?\n\nx = 256\ny = 256\nprint(x is y)",
+        "explanation": "`True`! 🤯 Python кэширует маленькие целые числа (от -5 до 256), поэтому `x` и `y` ссылаются на один объект. Но будь осторожен: для чисел вне этого диапазона `is` может вернуть `False` (например, `257 is 257` → `False` в некоторых случаях).",
+        "options": [
+            {"text": "True", "is_correct": true},
+            {"text": "False", "is_correct": false},
+            {"text": "Ошибка", "is_correct": false},
+            {"text": "256", "is_correct": false}
+        ]
+    },
+    {
+        "category": "python",
+        "question": "Как проверить, что переменная — строка?",
+        "explanation": "Используй `isinstance(x, str)`. Это безопаснее, чем `type(x) == str`, потому что учитывает наследование. Например: `isinstance('hello', str) → True`. 🔍 `type()` же строго проверяет тип без учёта подклассов.",
+        "options": [
+            {"text": "isinstance(x, str)", "is_correct": true},
+            {"text": "x.is_str()", "is_correct": false},
+            {"text": "type(x) is str", "is_correct": false},
+            {"text": "x == str", "is_correct": false}
+        ]
+    },
+    {
+        "category": "python",
+        "question": "Что выведет код?\n\na = [1, 2]\nb = a\na = a + [3]\nprint(b)",
+        "explanation": "`[1, 2]`! Оператор `+` создаёт **новый** список, поэтому `a` теперь ссылается на другой объект, а `b` остался прежним. Если бы было `a.append(3)`, тогда `b` тоже изменился бы! 🔄 Важно различать `+` и методы изменяющих операций.",
+        "options": [
+            {"text": "[1, 2]", "is_correct": true},
+            {"text": "[1, 2, 3]", "is_correct": false},
+            {"text": "Ошибка", "is_correct": false},
+            {"text": "None", "is_correct": false}
+        ]
+    },
+    {
+        "category": "python",
+        "question": "Как создать кортеж из одного элемента?",
+        "explanation": "Добавь запятую: `t = (1,)`. 🤹‍♂️ Без запятой `(1)` — это просто число в скобках, а не кортеж! Кортежи неизменяемы, поэтому часто используются как ключи в словарях.",
+        "options": [
+            {"text": "t = (1,)", "is_correct": true},
+            {"text": "t = (1)", "is_correct": false},
+            {"text": "t = [1]", "is_correct": false},
+            {"text": "t = 1,", "is_correct": false}
+        ]
+    },
+    {
+        "category": "python",
+        "question": "Что выведет код?\n\nx = 'hello'\nprint(x[0] = 'H')",
+        "explanation": "Ошибка! 🚫 Строки в Python **неизменяемы** (immutable). Нельзя поменять символ по индексу. Нужно создать новую строку: `x = 'H' + x[1:]`. Списки же изменяемы: `lst[0] = 1` работает.",
+        "options": [
+            {"text": "Ошибка", "is_correct": true},
+            {"text": "Hello", "is_correct": false},
+            {"text": "hello", "is_correct": false},
+            {"text": "None", "is_correct": false}
+        ]
+    },
+    {
+        "category": "python",
+        "question": "Как получить ASCII-код символа?",
+        "explanation": "Функция `ord()` возвращает код символа: `ord('A') → 65`, `ord('a') → 97`. 🔤 Обратная операция — `chr()`: `chr(65) → 'A'`. Полезно для шифров или работы с байтами!",
+        "options": [
+            {"text": "ord(c)", "is_correct": true},
+            {"text": "chr(c)", "is_correct": false},
+            {"text": "c.code()", "is_correct": false},
+            {"text": "ascii(c)", "is_correct": false}
+        ]
+    },
+    {
+        "category": "python",
+        "question": "Что выведет код?\n\nx = 0.1 + 0.2\nprint(x == 0.3)",
+        "explanation": "`False`! 🤯 Из-за погрешности float-арифметики `0.1 + 0.2` даёт `0.30000000000000004`, а не `0.3`. Для сравнения float используй `abs(x - 0.3) < 1e-9`. Важный нюанс в финансах!",
+        "options": [
+            {"text": "False", "is_correct": true},
+            {"text": "True", "is_correct": false},
+            {"text": "Ошибка", "is_correct": false},
+            {"text": "None", "is_correct": false}
+        ]
+    },
+    {
+        "category": "python",
+        "question": "Как создать множество (set)?",
+        "explanation": "Используй `{}` с элементами или `set()`: `s = {1, 2}` или `s = set([1, 2])`. 🧩 Множества хранят **уникальные** элементы и полезны для проверок вхождения: `1 in s → True`.",
+        "options": [
+            {"text": "s = {1, 2}", "is_correct": true},
+            {"text": "s = [1, 2]", "is_correct": false},
+            {"text": "s = (1, 2)", "is_correct": false},
+            {"text": "s = set(1, 2)", "is_correct": false}
+        ]
+    },
+    {
+        "category": "python",
+        "question": "Что выведет код?\n\nd = {'a': 1}\nd.update(b=2)\nprint(d)",
+        "explanation": "`{'a': 1, 'b': 2}`! 🛠️ Метод `update()` добавляет или обновляет ключи в словаре. Можно передавать как словарь (`update({'b': 2})`), так и именованные аргументы (`update(b=2)`). Удобно для объединения словарей!",
+        "options": [
+            {"text": "{'a': 1, 'b': 2}", "is_correct": true},
+            {"text": "{'a': 1}", "is_correct": false},
+            {"text": "Ошибка", "is_correct": false},
+            {"text": "{'b': 2}", "is_correct": false}
+        ]
+    },
+    {
+        "category": "python",
+        "question": "Как создать глубокую копию списка?",
+        "explanation": "Используй `copy.deepcopy()`: `import copy; new_list = copy.deepcopy(old_list)`. 📦 Это нужно, если список содержит вложенные изменяемые объекты (например, другие списки). Обычный `copy()` или срез (`list[:]`) создают только поверхностную копию!",
+        "options": [
+            {"text": "copy.deepcopy()", "is_correct": true},
+            {"text": "list.copy()", "is_correct": false},
+            {"text": "list[:]", "is_correct": false},
+            {"text": "list()", "is_correct": false}
+        ]
+    },
+    {
+        "category": "python",
+        "question": "Что выведет код?\n\nx = b'hello'\nprint(type(x))",
+        "explanation": "`<class 'bytes'>`! 🖥️ Байтовые строки (`bytes`) используются для работы с бинарными данными. Создаются с префиксом `b`. Важно: байты неизменяемы, а для текста используй обычные строки (`str`).",
+        "options": [
+            {"text": "<class 'bytes'>", "is_correct": true},
+            {"text": "<class 'str'>", "is_correct": false},
+            {"text": "<class 'bytearray'>", "is_correct": false},
+            {"text": "Ошибка", "is_correct": false}
+        ]
+    },
+    {
+        "category": "python",
+        "question": "Как преобразовать число в двоичную строку?",
+        "explanation": "Функция `bin()` вернёт строку с префиксом `0b`: `bin(5) → '0b101'`. 💻 Для восьмеричной — `oct()`, для шестнадцатеричной — `hex()`. Удобно для низкоуровневых операций!",
+        "options": [
+            {"text": "bin(x)", "is_correct": true},
+            {"text": "x.binary()", "is_correct": false},
+            {"text": "str(bin(x))", "is_correct": false},
+            {"text": "format(x, 'b')", "is_correct": false}
+        ]
+    },
+    {
+        "category": "python",
+        "question": "Что выведет код?\n\nprint(f'{10:.3f}')",
+        "explanation": "`10.000`! 🎯 f-строки позволяют форматировать вывод. Здесь `:.3f` означает «3 знака после точки для float». Можно и так: `f'{10:05d}' → '00010'` (дополнение нулями до 5 символов).",
+        "options": [
+            {"text": "10.000", "is_correct": true},
+            {"text": "10.00", "is_correct": false},
+            {"text": "10.333", "is_correct": false},
+            {"text": "Ошибка", "is_correct": false}
+        ]
+    },
+    {
+        "category": "python",
+        "question": "Как создать изменяемую байтовую строку?",
+        "explanation": "Используй `bytearray`: `b = bytearray(b'hello')`. 🔧 В отличие от `bytes`, `bytearray` можно изменять: `b[0] = 72` (код 'H'). Полезно для работы с бинарными протоколами!",
+        "options": [
+            {"text": "bytearray()", "is_correct": true},
+            {"text": "bytes()", "is_correct": false},
+            {"text": "memoryview()", "is_correct": false},
+            {"text": "mutablebytes()", "is_correct": false}
+        ]
+    },
+    {
+        "category": "python",
+        "question": "Что выведет код?\n\nx = [1, 2]\ny = x[:]\ny[0] = 100\nprint(x)",
+        "explanation": "`[1, 2]`! 🎯 Срез `[:]` создаёт **поверхностную копию** списка. Изменения в `y` не затронут `x`. Но будь осторожен: если бы элементы были изменяемыми (например, вложенные списки), копия не была бы полной!",
+        "options": [
+            {"text": "[1, 2]", "is_correct": true},
+            {"text": "[100, 2]", "is_correct": false},
+            {"text": "Ошибка", "is_correct": false},
+            {"text": "None", "is_correct": false}
+        ]
+    },
+    {
+        "category": "python",
+        "question": "Как проверить, что список пуст?",
+        "explanation": "Используй `not lst` или `len(lst) == 0`. 🧐 Первый вариант предпочтительнее, так как он читаемее и быстрее: Pythonic way! Пример: `if not lst: print('Пуст')`.",
+        "options": [
+            {"text": "not lst", "is_correct": true},
+            {"text": "lst.empty()", "is_correct": false},
+            {"text": "lst == []", "is_correct": false},
+            {"text": "lst.is_empty()", "is_correct": false}
+        ]
+    },
+    {
+        "category": "python",
+        "question": "Что выведет код?\n\nx = {'a': 1}\ny = x\ny['b'] = 2\nprint(x)",
+        "explanation": "`{'a': 1, 'b': 2}`! 🧲 Словари изменяемы, а `y = x` создаёт ссылку на тот же объект. Чтобы скопировать словарь, используй `y = x.copy()` или `dict(x)`.",
+        "options": [
+            {"text": "{'a': 1, 'b': 2}", "is_correct": true},
+            {"text": "{'a': 1}", "is_correct": false},
+            {"text": "Ошибка", "is_correct": false},
+            {"text": "None", "is_correct": false}
+        ]
+    },
+    {
+        "category": "python",
+        "question": "Как объединить два словаря?",
+        "explanation": "В Python 3.9+ можно использовать `|`: `d1 | d2`. 📚 В более старых версиях — `{**d1, **d2}` или `d1.update(d2)`. Важно: при совпадении ключей приоритет у правого словаря!",
+        "options": [
+            {"text": "d1 | d2 (Python 3.9+)", "is_correct": true},
+            {"text": "d1 + d2", "is_correct": false},
+            {"text": "d1.merge(d2)", "is_correct": false},
+            {"text": "dict.join(d1, d2)", "is_correct": false}
+        ]
+    },
+    {
+        "category": "python",
+        "question": "Что выведет код?\n\nx = set('hello')\nprint(x)",
+        "explanation": "`{'h', 'e', 'l', 'o'}`! 🌟 Множества хранят **уникальные** элементы, поэтому вторая 'l' исчезла. Порядок элементов не гарантируется. Полезно для удаления дубликатов: `list(set(lst))`.",
+        "options": [
+            {"text": "{'h', 'e', 'l', 'o'}", "is_correct": true},
+            {"text": "['h', 'e', 'l', 'l', 'o']", "is_correct": false},
+            {"text": "{'hello'}", "is_correct": false},
+            {"text": "Ошибка", "is_correct": false}
+        ]
+    },
+    {
+        "category": "python",
+        "question": "Как создать frozenset?",
+        "explanation": "Используй `frozenset()`: `fs = frozenset([1, 2])`. ❄️ `frozenset` — это неизменяемое множество. Его можно использовать как ключ словаря, в отличие от обычного `set`!",
+        "options": [
+            {"text": "frozenset()", "is_correct": true},
+            {"text": "set.frozen()", "is_correct": false},
+            {"text": "frozen(set)", "is_correct": false},
+            {"text": "set(immutable=True)", "is_correct": false}
+        ]
+    },
+  {
+    "category": "python",
+    "question": "Как записать условие 'если x больше 5'?",
+    "explanation": "Используй `if x > 5:`. 📌 Не забудь двоеточие в конце! Пример:\n\n```python\nif x > 5:\n    print('Больше 5')\n```",
+    "options": [
+        {"text": "if x > 5:", "is_correct": true},
+        {"text": "if (x > 5)", "is_correct": false},
+        {"text": "when x > 5:", "is_correct": false},
+        {"text": "x > 5 ?", "is_correct": false}
+    ]
+},
+  {
+    "category": "python",
+    "question": "Что делает блок `else` в условии?",
+    "explanation": "`else` выполняется, если основное условие `if` ложно. Например:\n\n```python\nif x > 5:\n    print('Больше 5')\nelse:\n    print('5 или меньше')\n```\n🎯 Важно: `else` без `if` вызовет ошибку!",
+    "options": [
+        {"text": "Выполняется, если if=False", "is_correct": true},
+        {"text": "Проверяет новое условие", "is_correct": false},
+        {"text": "Игнорирует if", "is_correct": false},
+        {"text": "Завершает программу", "is_correct": false}
+    ]
+},
+  {
+    "category": "python",
+    "question": "Как проверить несколько условий подряд?",
+    "explanation": "Используй `elif` (сокращение от 'else if'). Пример:\n\n```python\nif x > 10:\n    print('>10')\nelif x > 5:\n    print('>5')\nelse:\n    print('<=5')\n```\n🔍 Условия проверяются сверху вниз!",
+    "options": [
+        {"text": "elif", "is_correct": true},
+        {"text": "else if", "is_correct": false},
+        {"text": "and", "is_correct": false},
+        {"text": "case", "is_correct": false}
+    ]
+},
+  {
+    "category": "python",
+    "question": "Как проверить, что x между 5 и 10?",
+    "explanation": "Используй `and`: `if 5 < x < 10:` или `if x > 5 and x < 10:`. 🧠 Python позволяет писать красивые математические условия!",
+    "options": [
+        {"text": "if 5 < x < 10:", "is_correct": true},
+        {"text": "if 5 > x < 10:", "is_correct": false},
+        {"text": "if x in (5, 10):", "is_correct": false},
+        {"text": "if 5 <= x <= 10:", "is_correct": false}
+    ]
+},
+  {
+    "category": "python",
+    "question": "Какой стиль вложенных условий предпочтителен?",
+    "explanation": "Лучше использовать `elif` вместо глубокой вложенности. Пример плохого кода:\n\n```python\nif x > 5:\n    if x < 10:\n        print('5<x<10')\n```\n✅ Лучше:\n\n```python\nif 5 < x < 10:\n    print('5<x<10')\n```\n📌 Flat is better than nested!",
+    "options": [
+        {"text": "Минимизировать вложенность", "is_correct": true},
+        {"text": "Чем глубже, тем лучше", "is_correct": false},
+        {"text": "Только через and/or", "is_correct": false},
+        {"text": "Без разницы", "is_correct": false}
+    ]
+},
+  {
+    "category": "python",
+    "question": "Что выведет код?\n\nx = []\nif x:\n    print('Yes')\nelse:\n    print('No')",
+    "explanation": "`No`! 🎭 Пустой список (`[]`), как и `0`, `''`, `None`, `False`, считается ложным (`falsy`) в условиях. Полный список falsy-значений стоит запомнить!",
+    "options": [
+        {"text": "No", "is_correct": true},
+        {"text": "Yes", "is_correct": false},
+        {"text": "Ошибка", "is_correct": false},
+        {"text": "None", "is_correct": false}
+    ]
+},
+  {
+    "category": "python",
+    "question": "Что выведет код?\n\nx = 15\nif x % 3 == 0:\n    print('Fizz')\nelif x % 5 == 0:\n    print('Buzz')\nelse:\n    print(x)",
+    "explanation": "`Fizz`! 🎯 Условия проверяются сверху вниз. 15 делится на 3, поэтому `elif` и `else` игнорируются. Для правильного FizzBuzz нужно:\n\n```python\nif x % 15 == 0:\n    print('FizzBuzz')\n```",
+    "options": [
+        {"text": "Fizz", "is_correct": true},
+        {"text": "Buzz", "is_correct": false},
+        {"text": "FizzBuzz", "is_correct": false},
+        {"text": "15", "is_correct": false}
+    ]
+},
+  {
+    "category": "python",
+    "question": "Как записать это через тернарный оператор?\n\nif x > 5:\n    y = 10\nelse:\n    y = 20",
+    "explanation": "`y = 10 if x > 5 else 20`. 🧙‍♂️ Тернарный оператор — это однострочная замена `if-else`. Синтаксис: `значение_если_True if условие else значение_если_False`.",
+    "options": [
+        {"text": "y = 10 if x > 5 else 20", "is_correct": true},
+        {"text": "y = if x > 5: 10 else: 20", "is_correct": false},
+        {"text": "y = (x > 5) ? 10 : 20", "is_correct": false},
+        {"text": "y = 10 else 20 if x > 5", "is_correct": false}
+    ]
+},
+  {
+    "category": "python",
+    "question": "Как проверить, что число чётное?",
+    "explanation": "Используй остаток от деления: `if x % 2 == 0:`. 🔢 Чётные числа делятся на 2 без остатка. Можно даже так: `if not x % 2:` (так как `0` — это `falsy`).",
+    "options": [
+        {"text": "if x % 2 == 0:", "is_correct": true},
+        {"text": "if x // 2 == 0:", "is_correct": false},
+        {"text": "if x / 2 == 0:", "is_correct": false},
+        {"text": "if x & 1 == 0:", "is_correct": false}
+    ]
+},
+  {
+    "category": "python",
+    "question": "Как проверить, что символ — гласная буква?",
+    "explanation": "Используй `in` с кортежем: `if c in ('a', 'e', 'i', 'o', 'u'):`. 🎶 Для регистронезависимой проверки: `if c.lower() in 'aeiou'`.",
+    "options": [
+        {"text": "if c in 'aeiou':", "is_correct": true},
+        {"text": "if c == 'a' or 'e' or ...:", "is_correct": false},
+        {"text": "if c.is_vowel():", "is_correct": false},
+        {"text": "if 'a' <= c <= 'u':", "is_correct": false}
+    ]
+},
+  {
+    "category": "python",
+    "question": "Что выведет код?\n\nx = 5\nif x > 0:\n    print('A')\nif x > 3:\n    print('B')\nelse:\n    print('C')",
+    "explanation": "`A\\nB`! ⚠️ Здесь два **отдельных** условия. Первое `if` всегда проверяется, второе `if-else` — независимо. Для каскада нужно `elif`!",
+    "options": [
+        {"text": "A\nB", "is_correct": true},
+        {"text": "A\nC", "is_correct": false},
+        {"text": "B", "is_correct": false},
+        {"text": "C", "is_correct": false}
+    ]
+},
+  {
+    "category": "python",
+    "question": "Как проверить високосный год?",
+    "explanation": "Год високосный, если:\n1. Делится на 4, но не на 100 **или**\n2. Делится на 400.\nКод:\n\n```python\nif (year % 4 == 0 and year % 100 != 0) or (year % 400 == 0):\n    print('Високосный')\n```",
+    "options": [
+        {"text": "(year % 4 == 0 and year % 100 != 0) or (year % 400 == 0)", "is_correct": true},
+        {"text": "year % 4 == 0", "is_correct": false},
+        {"text": "year % 400 == 0", "is_correct": false},
+        {"text": "year % 100 == 0", "is_correct": false}
+    ]
+},
+  {
+    "category": "python",
+    "question": "Как перебрать элементы списка?",
+    "explanation": "Используй `for item in list:`. Например:\n\n```python\nfruits = ['apple', 'banana']\nfor fruit in fruits:\n    print(fruit)\n```\n🔹 `fruit` — временная переменная, принимает значения из списка.",
+    "options": [
+        {"text": "for item in list:", "is_correct": true},
+        {"text": "for list in item:", "is_correct": false},
+        {"text": "foreach item in list:", "is_correct": false},
+        {"text": "while item in list:", "is_correct": false}
+    ]
+},
+  {
+    "category": "python",
+    "question": "Как создать цикл от 0 до 4?",
+    "explanation": "Используй `range(5)` с `for`:\n\n```python\nfor i in range(5):\n    print(i)  # 0, 1, 2, 3, 4\n```\n📌 `range(5)` генерирует числа от 0 до 4 (5 не входит!).",
+    "options": [
+        {"text": "for i in range(5):", "is_correct": true},
+        {"text": "for i in 5:", "is_correct": false},
+        {"text": "for i <= 4:", "is_correct": false},
+        {"text": "while i in range(5):", "is_correct": false}
+    ]
+},
+  {
+    "category": "python",
+    "question": "Как выполнять код, пока x < 5?",
+    "explanation": "Используй `while`:\n\n```python\nx = 0\nwhile x < 5:\n    print(x)\n    x += 1\n```\n⚠️ Важно менять `x`, иначе цикл станет бесконечным!",
+    "options": [
+        {"text": "while x < 5:", "is_correct": true},
+        {"text": "for x < 5:", "is_correct": false},
+        {"text": "until x >= 5:", "is_correct": false},
+        {"text": "loop while x < 5:", "is_correct": false}
+    ]
+},
+  {
+    "category": "python",
+    "question": "Как досрочно выйти из цикла?",
+    "explanation": "Используй `break`:\n\n```python\nfor i in range(10):\n    if i == 5:\n        break\n    print(i)  # 0, 1, 2, 3, 4\n```\n🚪 `break` мгновенно завершает цикл.",
+    "options": [
+        {"text": "break", "is_correct": true},
+        {"text": "exit", "is_correct": false},
+        {"text": "stop", "is_correct": false},
+        {"text": "return", "is_correct": false}
+    ]
+},
+  {
+    "category": "python",
+    "question": "Как пропустить итерацию цикла?",
+    "explanation": "Используй `continue`:\n\n```python\nfor i in range(5):\n    if i == 2:\n        continue\n    print(i)  # 0, 1, 3, 4\n```\n⏩ `continue` переходит к следующей итерации, пропуская код после себя.",
+    "options": [
+        {"text": "continue", "is_correct": true},
+        {"text": "skip", "is_correct": false},
+        {"text": "pass", "is_correct": false},
+        {"text": "next", "is_correct": false}
+    ]
+},
+  {
+    "category": "python",
+    "question": "Когда выполняется `else` у цикла?",
+    "explanation": "Блок `else` выполняется, если цикл завершился **без `break`**:\n\n```python\nfor i in range(3):\n    print(i)\nelse:\n    print('Готово!')\n```\n🎯 Это полезно для поиска элементов: если не нашли — выполнится `else`.",
+    "options": [
+        {"text": "Если не было break", "is_correct": true},
+        {"text": "Всегда в конце", "is_correct": false},
+        {"text": "Если условие False", "is_correct": false},
+        {"text": "Только в while", "is_correct": false}
+    ]
+},
+  {
+    "category": "python",
+    "question": "Как перебрать матрицу?",
+    "explanation": "Через вложенные циклы:\n\n```python\nmatrix = [[1, 2], [3, 4]]\nfor row in matrix:\n    for num in row:\n        print(num)\n```\n🌀 Сначала берётся строка (`row`), затем каждый элемент в ней.",
+    "options": [
+        {"text": "for row in matrix: for num in row", "is_correct": true},
+        {"text": "for row and num in matrix", "is_correct": false},
+        {"text": "for num in matrix:", "is_correct": false},
+        {"text": "while matrix:", "is_correct": false}
+    ]
+},
+  {
+    "category": "python",
+    "question": "Как получить индекс и элемент?",
+    "explanation": "Используй `enumerate()`:\n\n```python\nfruits = ['apple', 'banana']\nfor idx, fruit in enumerate(fruits):\n    print(idx, fruit)  # 0 'apple', 1 'banana'\n```\n🔢 По умолчанию индексы начинаются с 0. Можно задать старт: `enumerate(fruits, start=1)`.",
+    "options": [
+        {"text": "for idx, item in enumerate(list):", "is_correct": true},
+        {"text": "for item in list.index():", "is_correct": false},
+        {"text": "for idx in range(len(list)):", "is_correct": false},
+        {"text": "for item, idx in list:", "is_correct": false}
+    ]
+},
+  {
+    "category": "python",
+    "question": "Как перебрать два списка параллельно?",
+    "explanation": "Через `zip()`:\n\n```python\nnames = ['Alice', 'Bob']\nages = [25, 30]\nfor name, age in zip(names, ages):\n    print(name, age)\n```\n📌 Если списки разной длины, цикл остановится на коротком.",
+    "options": [
+        {"text": "for a, b in zip(list1, list2):", "is_correct": true},
+        {"text": "for a in list1 and b in list2:", "is_correct": false},
+        {"text": "for a, b in (list1, list2):", "is_correct": false},
+        {"text": "for a in list1: for b in list2:", "is_correct": false}
+    ]
+},
+  {
+    "category": "python",
+    "question": "Как создать список квадратов чисел?",
+    "explanation": "Через генератор списка:\n\n```python\nsquares = [x**2 for x in range(5)]  # [0, 1, 4, 9, 16]\n```\n🚀 Это компактная замена:\n\n```python\nsquares = []\nfor x in range(5):\n    squares.append(x**2)\n```",
+    "options": [
+        {"text": "[x**2 for x in range(5)]", "is_correct": true},
+        {"text": "for x in range(5): x**2", "is_correct": false},
+        {"text": "list(map(x**2, range(5)))", "is_correct": false},
+        {"text": "squares = x**2 for x in range(5)", "is_correct": false}
+    ]
+},
+  {
+    "category": "python",
+    "question": "Как вычислить сумму чисел от 1 до 100?",
+    "explanation": "Через цикл `for`:\n\n```python\ntotal = 0\nfor i in range(1, 101):\n    total += i\n```\n📌 Или просто `sum(range(1, 101))`. Но цикл учит основам!",
+    "options": [
+        {"text": "for i in range(1,101): total += i", "is_correct": true},
+        {"text": "while i <= 100: total += i", "is_correct": false},
+        {"text": "sum = 100*101/2", "is_correct": false},
+        {"text": "total = sum(i for i <= 100)", "is_correct": false}
+    ]
+},
+  {
+    "category": "python",
+    "question": "Как проверить, что число простое?",
+    "explanation": "Проверь делители от 2 до √n:\n\n```python\nn = 17\nis_prime = True\nfor i in range(2, int(n**0.5)+1):\n    if n % i == 0:\n        is_prime = False\n        break\n```\n🔍 Если делитель найден — число не простое.",
+    "options": [
+        {"text": "Проверить делители до √n", "is_correct": true},
+        {"text": "Проверить все числа до n", "is_correct": false},
+        {"text": "if n % 2 == 1:", "is_correct": false},
+        {"text": "if n in primes_list:", "is_correct": false}
+    ]
+},
+  {
+    "category": "python",
+    "question": "Что выведет код?\n\nx = 5\nwhile x > 0:\n    print(x)\n    x -= 1\n    if x == 2:\n        break",
+    "explanation": "5\\n4\\n3\\n🛑 Цикл прервётся на `x == 2`, поэтому 2 и 1 не выводятся. `break` работает одинаково для `for` и `while`!",
+    "options": [
+        {"text": "5\n4\n3", "is_correct": true},
+        {"text": "5\n4\n3\n2", "is_correct": false},
+        {"text": "5\n4\n3\n2\n1", "is_correct": false},
+        {"text": "4\n3\n2", "is_correct": false}
+    ]
+},
+  {
+    "category": "python",
+    "question": "Как создать бесконечный цикл?",
+    "explanation": "Используй `while True:`:\n\n```python\nwhile True:\n    print('Бесконечность!')\n```\n☠️ Будь осторожен! Всегда добавляй условие выхода (например, `break`).",
+    "options": [
+        {"text": "while True:", "is_correct": true},
+        {"text": "for i in infinity:", "is_correct": false},
+        {"text": "while 1 == 1:", "is_correct": false},
+        {"text": "loop forever:", "is_correct": false}
+    ]
+},
+  {
+    "category": "python",
+    "question": "Как вычислить факториал числа n?",
+    "explanation": "Через цикл `for`:\n\n```python\nfactorial = 1\nfor i in range(1, n+1):\n    factorial *= i\n```\n🎓 Факториал 5: 1*2*3*4*5 = 120. Рекурсия тоже вариант, но цикл понятнее!",
+    "options": [
+        {"text": "for i in range(1, n+1): factorial *= i", "is_correct": true},
+        {"text": "while n > 0: factorial *= n; n -= 1", "is_correct": false},
+        {"text": "factorial = n * (n-1)", "is_correct": false},
+        {"text": "import math; math.factorial(n)", "is_correct": false}
+    ]
+},
+  {
+    "category": "python",
+    "question": "Как создать словарь {0:0, 1:1, 2:4}?",
+    "explanation": "Через генератор словаря:\n\n```python\nsquares = {x: x**2 for x in range(3)}\n```\n📚 Аналогично списковому включению, но с парами `ключ: значение`.",
+    "options": [
+        {"text": "{x: x**2 for x in range(3)}", "is_correct": true},
+        {"text": "dict(x = x**2 for x in range(3))", "is_correct": false},
+        {"text": "for x in range(3): squares[x] = x**2", "is_correct": false},
+        {"text": "squares = {0:0, 1:1, 2:4}", "is_correct": false}
+    ]
+},
+  {
+    "category": "python",
+    "question": "Как вычислить первые 10 чисел Фибоначчи?",
+    "explanation": "Через цикл:\n\n```python\na, b = 0, 1\nfor _ in range(10):\n    print(a)\n    a, b = b, a + b\n```\n🌀 Каждое число — сумма двух предыдущих. Начинается с 0, 1, 1, 2, 3...",
+    "options": [
+        {"text": "a, b = 0, 1; for _ in range(10): a, b = b, a+b", "is_correct": true},
+        {"text": "for i in range(10): print(i + (i-1))", "is_correct": false},
+        {"text": "fib = [0,1]; for i in range(2,10): fib += fib[i-1]+fib[i-2]", "is_correct": false},
+        {"text": "print([0,1,1,2,3,5,8,13,21,34])", "is_correct": false}
+    ]
+},
+  {
+    "category": "python",
+    "question": "Что выведет код?\n\nx = 3\nwhile x > 0:\n    print(x)\n    x -= 1\nelse:\n    print('Готово')",
+    "explanation": "3\\n2\\n1\\nГотово\\n✅ Блок `else` выполнится, так как `break` не вызывался. Это работает и в `for`, и в `while`!",
+    "options": [
+        {"text": "3\n2\n1\nГотово", "is_correct": true},
+        {"text": "3\n2\n1", "is_correct": false},
+        {"text": "Готово", "is_correct": false},
+        {"text": "Ошибка", "is_correct": false}
+    ]
+},
+  {
+    "category": "python",
+    "question": "Как объявить функцию без параметров?",
+    "explanation": "Используй `def` и двоеточие:\n\n```python\ndef greet():\n    print('Hello!')\n```\n📌 Функция становится активной только после вызова: `greet()`.",
+    "options": [
+        {"text": "def func():", "is_correct": true},
+        {"text": "function func():", "is_correct": false},
+        {"text": "func = def():", "is_correct": false},
+        {"text": "def func:", "is_correct": false}
+    ]
+},
+  {
+    "category": "python",
+    "question": "Как передать аргумент в функцию?",
+    "explanation": "Добавь параметр в объявление:\n\n```python\ndef greet(name):\n    print(f'Hello, {name}!')\n\ngreet('Alice')  # Hello, Alice!\n```\n🔹 `name` — параметр, `'Alice'` — аргумент.",
+    "options": [
+        {"text": "def func(param): ...; func(arg)", "is_correct": true},
+        {"text": "def func: param ...; func(arg)", "is_correct": false},
+        {"text": "func(param) = def ...", "is_correct": false},
+        {"text": "def func(): ...; func(param=arg)", "is_correct": false}
+    ]
+},
+  {
+    "category": "python",
+    "question": "Как вернуть результат из функции?",
+    "explanation": "Используй `return`:\n\n```python\ndef add(a, b):\n    return a + b\n\nresult = add(2, 3)  # 5\n```\n🚀 Без `return` функция вернёт `None`.",
+    "options": [
+        {"text": "return value", "is_correct": true},
+        {"text": "func.return(value)", "is_correct": false},
+        {"text": "yield value", "is_correct": false},
+        {"text": "print(value)", "is_correct": false}
+    ]
+},
+  {
+    "category": "python",
+    "question": "Как задать параметр по умолчанию?",
+    "explanation": "Укажи значение при объявлении:\n\n```python\ndef greet(name='Guest'):\n    print(f'Hello, {name}!')\n\ngreet()  # Hello, Guest!\n```\n⚠️ Параметры по умолчанию вычисляются один раз при создании функции!",
+    "options": [
+        {"text": "def func(param=default):", "is_correct": true},
+        {"text": "def func(param: default):", "is_correct": false},
+        {"text": "def func(param): default", "is_correct": false},
+        {"text": "def func(=default):", "is_correct": false}
+    ]
+},
+  {
+    "category": "python",
+    "question": "Как вызвать функцию с явным указанием параметров?",
+    "explanation": "Используй имена параметров:\n\n```python\ndef calc(x, y):\n    return x - y\n\ncalc(y=5, x=10)  # 5\n```\n🎯 Порядок не важен, если аргументы именованные!",
+    "options": [
+        {"text": "func(param=value)", "is_correct": true},
+        {"text": "func(value=param)", "is_correct": false},
+        {"text": "func(value as param)", "is_correct": false},
+        {"text": "func(:param=value)", "is_correct": false}
+    ]
+},
+  {
+    "category": "python",
+    "question": "Как принять любое количество позиционных аргументов?",
+    "explanation": "Используй `*args`:\n\n```python\ndef sum_all(*numbers):\n    return sum(numbers)\n\nsum_all(1, 2, 3)  # 6\n```\n📌 `args` — это кортеж. Можно назвать иначе, но `*` обязателен!",
+    "options": [
+        {"text": "def func(*args):", "is_correct": true},
+        {"text": "def func(args[]):", "is_correct": false},
+        {"text": "def func(...args):", "is_correct": false},
+        {"text": "def func(&args):", "is_correct": false}
+    ]
+},
+  {
+    "category": "python",
+    "question": "Как принять любое количество именованных аргументов?",
+    "explanation": "Используй `**kwargs`:\n\n```python\ndef greet(**options):\n    print(f\"Hello, {options.get('name', 'Guest')}!\")\n\ngreet(name='Alice', age=25)  # Hello, Alice!\n```\n📌 `kwargs` — это словарь. Имя может быть другим, но `**` обязательно!",
+    "options": [
+        {"text": "def func(**kwargs):", "is_correct": true},
+        {"text": "def func(kwargs={}):", "is_correct": false},
+        {"text": "def func(***kwargs):", "is_correct": false},
+        {"text": "def func(&&kwargs):", "is_correct": false}
+    ]
+},
+  {
+    "category": "python",
+    "question": "Какая переменная будет доступна вне функции?",
+    "explanation": "Только глобальные переменные (объявленные вне функций). Пример:\n\n```python\nx = 10\ndef func():\n    y = 20\nfunc()\nprint(x)  # 10\nprint(y)  # Ошибка!\n```\n🔍 Локальные переменные (`y`) существуют только внутри функции.",
+    "options": [
+        {"text": "Глобальные", "is_correct": true},
+        {"text": "Локальные", "is_correct": false},
+        {"text": "Аргументы функции", "is_correct": false},
+        {"text": "Все", "is_correct": false}
+    ]
+},
+  {
+    "category": "python",
+    "question": "Как изменить глобальную переменную внутри функции?",
+    "explanation": "Используй `global`:\n\n```python\nx = 10\ndef change():\n    global x\n    x = 20\nchange()\nprint(x)  # 20\n```\n⚠️ Без `global` создастся локальная переменная!",
+    "options": [
+        {"text": "global var", "is_correct": true},
+        {"text": "nonlocal var", "is_correct": false},
+        {"text": "var = global", "is_correct": false},
+        {"text": "def func(global var):", "is_correct": false}
+    ]
+},
+  {
+    "category": "python",
+    "question": "Как вычислить факториал через рекурсию?",
+    "explanation": "Функция вызывает саму себя:\n\n```python\ndef factorial(n):\n    return 1 if n == 0 else n * factorial(n-1)\n```\n🌀 Важно указать условие выхода (здесь `n == 0`), иначе будет бесконечная рекурсия!",
+    "options": [
+        {"text": "if n == 0: return 1; else: return n * factorial(n-1)", "is_correct": true},
+        {"text": "while n > 0: return n * factorial(n-1)", "is_correct": false},
+        {"text": "return n * factorial(n)", "is_correct": false},
+        {"text": "for i in range(n): return i * factorial(i-1)", "is_correct": false}
+    ]
+},
+  {
+    "category": "python",
+    "question": "Как создать анонимную функцию?",
+    "explanation": "Через `lambda`:\n\n```python\nsquare = lambda x: x ** 2\nsquare(5)  # 25\n```\n📌 Лямбды удобны для коротких операций, например, в `map()` или `filter()`.",
+    "options": [
+        {"text": "lambda args: expression", "is_correct": true},
+        {"text": "def lambda(args): return expression", "is_correct": false},
+        {"text": "function(args) => expression", "is_correct": false},
+        {"text": "anon def(args): expression", "is_correct": false}
+    ]
+},
+  {
+    "category": "python",
+    "question": "Что вернёт этот код?\n\ndef outer():\n    x = 10\n    def inner():\n        return x\n    return inner\nfunc = outer()\nprint(func())",
+    "explanation": "`10`! 🎯 Внутренняя функция `inner` запоминает переменные из внешней `outer` (даже после её завершения). Это и есть замыкание!",
+    "options": [
+        {"text": "10", "is_correct": true},
+        {"text": "Ошибка", "is_correct": false},
+        {"text": "None", "is_correct": false},
+        {"text": "<function inner>", "is_correct": false}
+    ]
+},
+  {
+    "category": "python",
+    "question": "Как измерить время выполнения функции?",
+    "explanation": "Создай декоратор:\n\n```python\nimport time\ndef timer(func):\n    def wrapper(*args, **kwargs):\n        start = time.time()\n        result = func(*args, **kwargs)\n        print(f'Time: {time.time() - start}s')\n        return result\n    return wrapper\n\n@timer\ndef calculate():\n    time.sleep(1)\n```",
+    "options": [
+        {"text": "Создать функцию-обёртку", "is_correct": true},
+        {"text": "Добавить time.sleep()", "is_correct": false},
+        {"text": "Использовать lambda", "is_correct": false},
+        {"text": "Переписать функцию", "is_correct": false}
+    ]
+},
+  {
+    "category": "python",
+    "question": "Как вычислить n-ное число Фибоначчи?",
+    "explanation": "Через рекурсию:\n\n```python\ndef fib(n):\n    return n if n <= 1 else fib(n-1) + fib(n-2)\n```\n⚠️ Неэффективно для больших `n`! Лучше использовать цикл или мемоизацию.",
+    "options": [
+        {"text": "if n <= 1: return n; else: return fib(n-1) + fib(n-2)", "is_correct": true},
+        {"text": "return fib(n) + fib(n-1)", "is_correct": false},
+        {"text": "for i in range(n): return fib(i)", "is_correct": false},
+        {"text": "while n > 0: return fib(n-1)", "is_correct": false}
+    ]
+},
+  {
+    "category": "python",
+    "question": "Как изменить переменную из внешней (но не глобальной) функции?",
+    "explanation": "Используй `nonlocal`:\n\n```python\ndef outer():\n    x = 10\n    def inner():\n        nonlocal x\n        x = 20\n    inner()\n    print(x)  # 20\n```\n🔍 В отличие от `global`, `nonlocal` работает с ближайшей внешней областью видимости.",
+    "options": [
+        {"text": "nonlocal var", "is_correct": true},
+        {"text": "global var", "is_correct": false},
+        {"text": "outer.var", "is_correct": false},
+        {"text": "var = nonlocal", "is_correct": false}
+    ]
+},
+  {
+    "category": "python",
+    "question": "Как указать тип параметра и возвращаемого значения?",
+    "explanation": "Через аннотации:\n\n```python\ndef greet(name: str) -> str:\n    return f'Hello, {name}!'\n```\n📌 Это подсказка для разработчиков, но Python их не проверяет! Для проверки используй `mypy`.",
+    "options": [
+        {"text": "def func(param: type) -> return_type:", "is_correct": true},
+        {"text": "def func(param as type) returns return_type:", "is_correct": false},
+        {"text": "def func(type param) -> return_type:", "is_correct": false},
+        {"text": "def [type] func(param):", "is_correct": false}
+    ]
+},
+  {
+    "category": "python",
+    "question": "Как создать декоратор, принимающий аргументы?",
+    "explanation": "Добавь ещё один уровень вложенности:\n\n```python\ndef repeat(times):\n    def decorator(func):\n        def wrapper(*args, **kwargs):\n            for _ in range(times):\n                func(*args, **kwargs)\n        return wrapper\n    return decorator\n\n@repeat(times=3)\ndef hello():\n    print('Hi!')\n```",
+    "options": [
+        {"text": "Декоратор с тремя вложенными функциями", "is_correct": true},
+        {"text": "Использовать lambda", "is_correct": false},
+        {"text": "Передать аргументы в wrapper", "is_correct": false},
+        {"text": "Декоратор не может принимать аргументы", "is_correct": false}
+    ]
+},
+  {
+    "category": "python",
+    "question": "Что выведет код?\n\ndef greet():\n    return 'Hello'\nfunc = greet\nprint(func())",
+    "explanation": "`Hello`! 🎯 В Python функции — это объекты первого класса. Их можно присваивать переменным, передавать в другие функции и возвращать!",
+    "options": [
+        {"text": "Hello", "is_correct": true},
+        {"text": "<function greet>", "is_correct": false},
+        {"text": "Ошибка", "is_correct": false},
+        {"text": "None", "is_correct": false}
+    ]
+},
+  {
+    "category": "python",
+    "question": "Как применить функцию к каждому элементу списка?",
+    "explanation": "Используй `map()`:\n\n```python\ndef square(x):\n    return x ** 2\nnums = [1, 2, 3]\nsquared = list(map(square, nums))  # [1, 4, 9]\n```\n🌀 `filter()` работает аналогично, но оставляет элементы, для которых функция вернула `True`.",
+    "options": [
+        {"text": "map(func, iterable)", "is_correct": true},
+        {"text": "iterable.map(func)", "is_correct": false},
+        {"text": "for x in iterable: func(x)", "is_correct": false},
+        {"text": "func.apply(iterable)", "is_correct": false}
+    ]
+},
+  {
+    "category": "python",
+    "question": "Что произойдёт при очень глубокой рекурсии?",
+    "explanation": "Будет `RecursionError` (максимальная глубина ~1000). 🏗️ Чтобы избежать этого:\n1. Перепиши на цикл.\n2. Используй `sys.setrecursionlimit()` (осторожно!).\n3. Примени мемоизацию (`@lru_cache`).",
+    "options": [
+        {"text": "RecursionError", "is_correct": true},
+        {"text": "Программа зависнет", "is_correct": false},
+        {"text": "Python сам оптимизирует", "is_correct": false},
+        {"text": "StackOverflow", "is_correct": false}
+    ]
+},
+  {
+    "category": "python",
+    "question": "Как принять и позиционные, и именованные аргументы?",
+    "explanation": "Объедини `*args` и `**kwargs`:\n\n```python\ndef func(*args, **kwargs):\n    print(args, kwargs)\n\nfunc(1, 2, a=3)  # (1, 2) {'a': 3}\n```\n📌 Важен порядок: сначала `*args`, потом `**kwargs`!",
+    "options": [
+        {"text": "def func(*args, **kwargs):", "is_correct": true},
+        {"text": "def func(**kwargs, *args):", "is_correct": false},
+        {"text": "def func(args*, kwargs**):", "is_correct": false},
+        {"text": "def func(*args, kwargs):", "is_correct": false}
+    ]
+},
+  {
+    "category": "python",
+    "question": "Что выведет код?\n\ndef multiplier(n):\n    def func(x):\n        return x * n\n    return func\ndouble = multiplier(2)\nprint(double(5))",
+    "explanation": "`10`! 🧠 Функция `double` запомнила `n=2` из внешней области видимости. Это мощный приём для создания специализированных функций!",
+    "options": [
+        {"text": "10", "is_correct": true},
+        {"text": "5", "is_correct": false},
+        {"text": "2", "is_correct": false},
+        {"text": "Ошибка", "is_correct": false}
+    ]
+},
+  {
+    "category": "python",
+    "question": "Как ускорить рекурсивную функцию?",
+    "explanation": "Используй кэширование:\n\n```python\nfrom functools import lru_cache\n\n@lru_cache\ndef fib(n):\n    return n if n <= 1 else fib(n-1) + fib(n-2)\n```\n🚀 `@lru_cache` запоминает результаты вызовов и избегает повторных вычислений!",
+    "options": [
+        {"text": "@lru_cache", "is_correct": true},
+        {"text": "@memoize", "is_correct": false},
+        {"text": "@cache", "is_correct": false},
+        {"text": "@speedup", "is_correct": false}
+    ]
+},
+  {
+    "category": "python",
+    "question": "Как добавить описание функции?",
+    "explanation": "Используй docstring:\n\n```python\ndef greet():\n    \"\"\"Выводит приветствие.\"\"\"\n    print('Hello!')\n\nprint(greet.__doc__)  # 'Выводит приветствие.'\n```\n📖 Docstring доступен через `help(func)` и используется для генерации документации!",
+    "options": [
+        {"text": "Добавить строку в теле функции", "is_correct": true},
+        {"text": "func.doc = 'описание'", "is_correct": false},
+        {"text": "@docstring('описание')", "is_correct": false},
+        {"text": "def func() # описание", "is_correct": false}
+    ]
+},
+  {
+    "category": "python",
+    "question": "Какой тип данных у `x = 3.14`?",
+    "explanation": "Числа с плавающей точкой (float) — это числа с дробной частью, например, 3.14 или -0.001. Они используются для точных вычислений, например, в математике или физике. 🧮✨ Просто запомни: если есть точка — это float!",
+    "options": [
+        {"text": "float", "is_correct": true},
+        {"text": "int", "is_correct": false},
+        {"text": "str", "is_correct": false},
+        {"text": "bool", "is_correct": false}
+    ]
+},
+  {
+    "category": "python",
+    "question": "Какой тип у `x = True`?",
+    "explanation": "`True` и `False` — это булевы значения (bool), которые используются для логических операций. Они похожи на выключатель: либо **включено** (True), либо **выключено** (False). 💡 Кстати, в Python `True` и `False` — это подклассы `int`, но в 99% случаев это не важно!",
+    "options": [
+        {"text": "bool", "is_correct": true},
+        {"text": "int", "is_correct": false},
+        {"text": "str", "is_correct": false},
+        {"text": "float", "is_correct": false}
+    ]
+},
+  {
+    "category": "python",
+    "question": "Что выведет код?\n\nx = 5\ny = '7'\nprint(x + y)",
+    "explanation": "Ошибка! 🚨 Python не может сложить число (`int`) и строку (`str`). Нужно привести типы к одному виду: либо `x + int(y)`, либо `str(x) + y`. Это частая ошибка у новичков, но ты теперь знаешь, как её избежать! 🛡️",
+    "options": [
+        {"text": "Ошибка", "is_correct": true},
+        {"text": "12", "is_correct": false},
+        {"text": "57", "is_correct": false},
+        {"text": "None", "is_correct": false}
+    ]
+},
+  {
+    "category": "python",
+    "question": "Что выведет код?\n\na = [1, 2]\nb = a\nb.append(3)\nprint(a)",
+    "explanation": "Списки в Python **изменяемые** (mutable), поэтому `b = a` не создаёт копию, а ссылается на тот же список. Добавляя элемент в `b`, мы меняем и `a`! 🔄 Если нужно копировать, используй `b = a.copy()`. Важный нюанс!",
+    "options": [
+        {"text": "[1, 2, 3]", "is_correct": true},
+        {"text": "[1, 2]", "is_correct": false},
+        {"text": "Ошибка", "is_correct": false},
+        {"text": "None", "is_correct": false}
+    ]
+},
+  {
+    "category": "python",
+    "question": "Чем кортеж (tuple) отличается от списка (list)?",
+    "explanation": "Кортеж (`tuple`) — **неизменяемый** (immutable), занимает меньше памяти и часто используется как ключ в словаре. 📦 Список (`list`) — **изменяемый**, поддерживает добавление/удаление элементов. Например, `(1, 2)` — кортеж, `[1, 2]` — список. Выбор зависит от задачи!",
+    "options": [
+        {"text": "Неизменяемостью", "is_correct": true},
+        {"text": "Скоростью доступа", "is_correct": false},
+        {"text": "Типом элементов", "is_correct": false},
+        {"text": "Способом создания", "is_correct": false}
+    ]
+},
+
+    {
+        "category": "python",
+        "question": "Как создать переменную с целым числом?",
+        "explanation": "Целые числа (`int`) — это числа без дробной части, например, 42 или -7. Просто присвой значение переменной: `x = 10`. 🎯 Важно: не используй кавычки, иначе это станет строкой!",
+        "options": [
+            {"text": "x = 10", "is_correct": true},
+            {"text": "x = '10'", "is_correct": false},
+            {"text": "x = 10.0", "is_correct": false},
+            {"text": "x = True", "is_correct": false}
+        ]
+    },
+    {
+        "category": "python",
+        "question": "Какой тип у `x = 'Hello'`?",
+        "explanation": "Строки (`str`) — это текст в кавычках (одинарных или двойных). Они используются для работы с текстом: `name = 'Анна'`, `message = \"Привет\"`. 📜 Помни: даже число в кавычках — это строка!",
+        "options": [
+            {"text": "str", "is_correct": true},
+            {"text": "int", "is_correct": false},
+            {"text": "list", "is_correct": false},
+            {"text": "bool", "is_correct": false}
+        ]
+    },
+    {
+        "category": "python",
+        "question": "Что выведет `print(type(3.14))`?",
+        "explanation": "`type()` показывает тип данных. Числа с точкой (даже если `.0`) — это `float`. Например, `5.0`, `-0.001`. 🧐 Важно: `3` — это `int`, а `3.0` — уже `float`!",
+        "options": [
+            {"text": "<class 'float'>", "is_correct": true},
+            {"text": "<class 'int'>", "is_correct": false},
+            {"text": "<class 'str'>", "is_correct": false},
+            {"text": "Ошибка", "is_correct": false}
+        ]
+    },
+    {
+        "category": "python",
+        "question": "Как преобразовать строку '5' в число?",
+        "explanation": "Используй `int()` для целых чисел или `float()` для дробных. Например: `int('5') → 5`, `float('3.14') → 3.14`. ⚠️ Будь осторожен: `int('5.5')` вызовет ошибку!",
+        "options": [
+            {"text": "int('5')", "is_correct": true},
+            {"text": "str(5)", "is_correct": false},
+            {"text": "float(5)", "is_correct": false},
+            {"text": "'5' * 1", "is_correct": false}
+        ]
+    },
+    {
+        "category": "python",
+        "question": "Что вернёт `bool('False')`?",
+        "explanation": "Любая непустая строка в Python преобразуется в `True`, даже если она содержит 'False'! 🎭 Пустая строка (`''`) даст `False`. Аналогично: `bool(0) → False`, `bool(1) → True`.",
+        "options": [
+            {"text": "True", "is_correct": true},
+            {"text": "False", "is_correct": false},
+            {"text": "Ошибка", "is_correct": false},
+            {"text": "None", "is_correct": false}
+        ]
+    },
+    {
+        "category": "python",
+        "question": "Как проверить тип переменной?",
+        "explanation": "Используй `type(x)` или `isinstance(x, тип)`. Например: `type(10) → <class 'int'>`, `isinstance('hi', str) → True`. 🔍 `isinstance()` удобен для проверки наследования.",
+        "options": [
+            {"text": "type(x)", "is_correct": true},
+            {"text": "x.type()", "is_correct": false},
+            {"text": "check_type(x)", "is_correct": false},
+            {"text": "x == type", "is_correct": false}
+        ]
+    },
+    {
+        "category": "python",
+        "question": "Что такое None?",
+        "explanation": "`None` — это специальный тип, означающий «ничего». Он используется, когда нужно показать отсутствие значения. 🌌 Например, функция без `return` возвращает `None`. Это не то же самое, что `False` или `0`!",
+        "options": [
+            {"text": "Отсутствие значения", "is_correct": true},
+            {"text": "Пустая строка", "is_correct": false},
+            {"text": "Число 0", "is_correct": false},
+            {"text": "Ложь (False)", "is_correct": false}
+        ]
+    },
+    {
+        "category": "python",
+        "question": "Как создать пустой список?",
+        "explanation": "Пустой список можно создать так: `lst = []` или `lst = list()`. 📦 Списки изменяемы (mutable) и могут содержать элементы разных типов. Например: `[1, 'a', True]`.",
+        "options": [
+            {"text": "lst = []", "is_correct": true},
+            {"text": "lst = {}", "is_correct": false},
+            {"text": "lst = ()", "is_correct": false},
+            {"text": "lst = None", "is_correct": false}
+        ]
+    },
+    {
+        "category": "python",
+        "question": "Что выведет `print(2 + '2')`?",
+        "explanation": "Ошибка! 🚨 Python не может сложить число (`int`) и строку (`str`). Нужно явное преобразование: `2 + int('2') → 4` или `str(2) + '2' → '22'`. Это частая ошибка!",
+        "options": [
+            {"text": "Ошибка", "is_correct": true},
+            {"text": "4", "is_correct": false},
+            {"text": "'22'", "is_correct": false},
+            {"text": "'4'", "is_correct": false}
+        ]
+    },
+    {
+        "category": "python",
+        "question": "Как узнать длину строки?",
+        "explanation": "Функция `len()` возвращает длину строки (и других коллекций). Например: `len('Привет') → 6` (кириллица считается за 1 символ). 📏 Работает и для списков: `len([1, 2]) → 2`.",
+        "options": [
+            {"text": "len(s)", "is_correct": true},
+            {"text": "s.length()", "is_correct": false},
+            {"text": "length(s)", "is_correct": false},
+            {"text": "s.count()", "is_correct": false}
+        ]
+    },
+
+  {
+    "category": "python",
+    "question": "Какой тип у x = 5?",
+    "explanation": "В Python тип переменной определяется автоматически. Число 5 — целое, значит, его тип int (integer). Представь, что ты положил яблоко в корзину — теперь ты знаешь, что там. Так Python «помечает» значение, чтобы потом с ним правильно работать 🍎🪄",
+    "options": [
+      {"text": "int", "is_correct": true},
+      {"text": "float", "is_correct": false},
+      {"text": "str", "is_correct": false},
+      {"text": "bool", "is_correct": false}
+    ]
+  },
+  {
+    "category": "python",
+    "question": "Что выведет print(type(5.0))?",
+    "explanation": "Число с точкой (например, 5.0) всегда считается дробным, даже если оно целое. Поэтому Python присвоит ему тип float 📉 Float — это числа с плавающей точкой. Как будто ты говоришь: «Я хочу работать с дробями», даже если у тебя пока просто целое число.",
+    "options": [
+      {"text": "<class 'float'>", "is_correct": true},
+      {"text": "<class 'int'>", "is_correct": false},
+      {"text": "Ошибка", "is_correct": false},
+      {"text": "None", "is_correct": false}
+    ]
+  },
+  {
+    "category": "python",
+    "question": "Как получить тип переменной?",
+    "explanation": "Функция type() — это как маленький детектив, который проверяет, кто перед ним 🕵️‍♂️ Если ты вызовешь type(x), Python покажет тебе, какой тип у переменной x. Очень удобно, когда ты не уверен, что получил на вход.",
+    "options": [
+      {"text": "type()", "is_correct": true},
+      {"text": "typeof()", "is_correct": false},
+      {"text": "__type__", "is_correct": false},
+      {"text": "get_type()", "is_correct": false}
+    ]
+  },
+  {
+    "category": "python",
+    "question": "Какой тип у x = '5'?",
+    "explanation": "Кавычки вокруг числа говорят Python, что это не число, а текст 📝 То есть строка. str — это тип, который хранит последовательность символов. Представь, что ты написал цифру на листочке бумаги — она больше не число, а просто символ.",
+    "options": [
+      {"text": "str", "is_correct": true},
+      {"text": "int", "is_correct": false},
+      {"text": "char", "is_correct": false},
+      {"text": "number", "is_correct": false}
+    ]
+  },
+  {
+    "category": "python",
+    "question": "Что такое динамическая типизация?",
+    "explanation": "В Python переменная не привязана к одному типу. Сегодня это число, завтра — строка. Это свобода 💃 Но и ответственность. Иногда это может запутать, поэтому важно понимать, какие данные у тебя сейчас. Это как рюкзак, в который ты можешь положить что угодно — но сам должен помнить, что там лежит.",
+    "options": [
+      {"text": "Тип переменной меняется", "is_correct": true},
+      {"text": "Тип нельзя менять", "is_correct": false},
+      {"text": "Тип задаётся один раз", "is_correct": false},
+      {"text": "Нет типов вообще", "is_correct": false}
+    ]
+  },
+
+  {
+    "category": "python",
+    "question": "Можно ли использовать if без else?",
+    "explanation": "Конечно можно! Иногда тебе нужно сделать что-то только при определённом условии, а если оно не выполнено — ничего не делать 🌟 Представь, что ты проверяешь: «Если у тебя есть билет — входи», но если нет — просто проходи мимо. Else не обязателен.",
+    "options": [
+      {"text": "Да", "is_correct": true},
+      {"text": "Нет", "is_correct": false},
+      {"text": "Только с elif", "is_correct": false},
+      {"text": "Только в функциях", "is_correct": false}
+    ]
+  },
+  {
+    "category": "python",
+    "question": "Что выведет код?\n\nx = 0\nif x:\n    print('True')\nelse:\n    print('False')",
+    "explanation": "В Python числа, равные нулю, пустые строки или None считаются False 🤯 Это часть так называемых 'falsy' значений. Поэтому блок if пропустится, и на экране появится 'False'. Как будто ты спрашиваешь: «Есть ли что-то?» — ответ: «Нет».",
+    "options": [
+      {"text": "'False'", "is_correct": true},
+      {"text": "'True'", "is_correct": false},
+      {"text": "Ошибка", "is_correct": false},
+      {"text": "None", "is_correct": false}
+    ]
+  },
+  {
+    "category": "python",
+    "question": "Как написать однострочное условие?",
+    "explanation": "Иногда хочется сэкономить место и сделать код короче. В Python для этого есть тернарный оператор: x = a if condition else b 🧠 Это как сказать: «Если всё хорошо — возьми кофе, иначе — воду». Удобно и понятно.",
+    "options": [
+      {"text": "x = a if cond else b", "is_correct": true},
+      {"text": "x = if cond then a else b", "is_correct": false},
+      {"text": "x = condition ? a : b", "is_correct": false},
+      {"text": "x = cond.then(a).else(b)", "is_correct": false}
+    ]
+  },
+  {
+    "category": "python",
+    "question": "Какое значение считается True?",
+    "explanation": "В Python почти всё считается True, кроме нескольких исключений: 0, '', [], {}, None 🟡 Это важно помнить, когда используешь переменные в условиях. Представь, что ты проверяешь: «Есть ли что-то?» — если да, то выполняй действие.",
+    "options": [
+      {"text": "'строка'", "is_correct": true},
+      {"text": "''", "is_correct": false},
+      {"text": "0", "is_correct": false},
+      {"text": "None", "is_correct": false}
+    ]
+  },
+  {
+    "category": "python",
+    "question": "Что выведет код?\n\nif 3 in [1, 2, 4]:\n    print('Yes')\nelse:\n    print('No')",
+    "explanation": "Оператор in проверяет наличие элемента в списке 🔍 Здесь мы проверяем: есть ли число 3 среди [1, 2, 4]? Нет. Значит, выполнится блок else, и на экране появится 'No'. Как будто ты ищешь ключи в карманах — их там нет → проверяешь сумку.",
+    "options": [
+      {"text": "'No'", "is_correct": true},
+      {"text": "'Yes'", "is_correct": false},
+      {"text": "Ошибка", "is_correct": false},
+      {"text": "None", "is_correct": false}
+    ]
+  },
+  {
+    "category": "python",
+    "question": "Как сравнить тип переменной?",
+    "explanation": "Иногда нужно убедиться, что переменная имеет нужный тип 🧐 Для этого используется isinstance(x, тип). Например: isinstance(5, int) → True. Это лучше, чем сравнивать через type(), потому что isinstance() работает с наследованием.",
+    "options": [
+      {"text": "isinstance(x, int)", "is_correct": true},
+      {"text": "type(x) == int", "is_correct": false},
+      {"text": "x.type() == int", "is_correct": false},
+      {"text": "check_type(x, int)", "is_correct": false}
+    ]
+  },
+  {
+    "category": "python",
+    "question": "Что выведет код?\n\nx = 5\ny = 10\nresult = x if x > y else y\nprint(result)",
+    "explanation": "Здесь используется тернарный оператор: x если x > y, иначе y 🧠 Сравниваем 5 и 10: 5 больше не будет, значит, результатом станет y, то есть 10. Такой способ удобен, когда нужно выбрать максимум или минимум за одну строчку. Как будто выбираешь самый высокий стул из двух.",
+    "options": [
+      {"text": "10", "is_correct": true},
+      {"text": "5", "is_correct": false},
+      {"text": "Ошибка", "is_correct": false},
+      {"text": "None", "is_correct": false}
+    ]
+  },
+  {
+    "category": "python",
+    "question": "Что неверно в этом коде?\n\nif x = 5:\n    print('Yes')",
+    "explanation": "В условии ты использовал оператор присваивания = вместо оператора сравнения == 🤯 Это частая ошибка даже у опытных разработчиков. if проверяет истинность условия, а не присваивает значение. Представь, что ты спрашиваешь: «Это твой дом?», а не говоришь: «Теперь это твой дом».",
+    "options": [
+      {"text": "Использован = вместо ==", "is_correct": true},
+      {"text": "Нет двоеточия", "is_correct": false},
+      {"text": "Ошибка отступа", "is_correct": false},
+      {"text": "Неверная переменная", "is_correct": false}
+    ]
+  },
+  {
+    "category": "python",
+    "question": "Какой блок выполнится?",
+    "explanation": "Давай разберёмся 🫶 Здесь после if идёт просто число 0, которое считается 'falsy' в Python. То есть условие не выполняется → сработает else. Очень легко забыть, что не всё, что не False, автоматически True 😄",
+    "options": [
+      {"text": "'False'", "is_correct": true},
+      {"text": "'True'", "is_correct": false},
+      {"text": "Ошибка", "is_correct": false},
+      {"text": "None", "is_correct": false}
+    ]
+  },
+  {
+    "category": "python",
+    "question": "Что выведет код?\n\nx = 5\nif x in range(1, 5):\n    print('Yes')\nelse:\n    print('No')",
+    "explanation": "range(1, 5) создаёт последовательность от 1 до 4 (не включая 5) 🔄 Поэтому x=5 не попадает в этот диапазон. Такие ошибки часто возникают, когда мы думаем, что range включает конечное значение. Это как сказать: «От 1 до 5 включительно», но на самом деле получается «до 5, не включая».",
+    "options": [
+      {"text": "'No'", "is_correct": true},
+      {"text": "'Yes'", "is_correct": false},
+      {"text": "Ошибка", "is_correct": false},
+      {"text": "None", "is_correct": false}
+    ]
+  },
+  {
+    "category": "python",
+    "question": "Где ошибка в этом условии?\n\nif age > 18 or < 60:",
+    "explanation": "Здесь не хватает переменной во второй части условия 🚨 В Python нельзя писать просто '< 60' — нужно указывать, с чем сравнивать: if age > 18 or age < 60. Это как сказать: «Больше 18 или меньше 60» — но не уточнить, о чём речь. Кто меньше? Что больше?",
+    "options": [
+      {"text": "Не указано age во втором сравнении", "is_correct": true},
+      {"text": "Нужно and вместо or", "is_correct": false},
+      {"text": "Нет двоеточия", "is_correct": false},
+      {"text": "Ошибка синтаксиса", "is_correct": false}
+    ]
+  },
+  {
+    "category": "python",
+    "question": "Что выведет код?\n\nif not 5 - 5:\n    print('A')\nelse:\n    print('B')",
+    "explanation": "5 - 5 равно 0, а 0 в Python считается False 🟢 Поэтому not 0 → True → выполнится блок if. Эта логика может запутать, особенно если ты не уверен, какие значения считаются falsy. Как будто ты сказал: «Если НЕ ничего — делай A». И поскольку там действительно не «ничего», то A и будет.",
+    "options": [
+      {"text": "'A'", "is_correct": true},
+      {"text": "'B'", "is_correct": false},
+      {"text": "Ошибка", "is_correct": false},
+      {"text": "None", "is_correct": false}
+    ]
+  },
+  {
+    "category": "python",
+    "question": "Что не так с этим кодом?\n\nif x > 5\n    print('Big')",
+    "explanation": "После условия if обязательно должно быть двоеточие : 🔍 Без него Python не поймёт, где начинается тело условия. Это как начать предложение с заглавной буквы, но забыть точку в конце — программа просто не поймёт, что ты имел в виду.",
+    "options": [
+      {"text": "Нет двоеточия после if", "is_correct": true},
+      {"text": "Неверный оператор", "is_correct": false},
+      {"text": "Ошибка отступа", "is_correct": false},
+      {"text": "Неверная переменная", "is_correct": false}
+    ]
+  },
+
+  {
+    "category": "python",
+    "question": "Как объявить цикл for?",
+    "explanation": "Цикл for в Python начинается с ключевого слова `for`, за которым следует переменная и коллекция, по которой нужно пройтись 🧠 После всего этого ставится двоеточие, а тело цикла пишется с отступом. Представь, что ты перебираешь список гостей и говоришь каждому: «Привет!».",
+    "options": [
+      {"text": "for x in list:", "is_correct": true},
+      {"text": "for (x in list)", "is_correct": false},
+      {"text": "loop x in list:", "is_correct": false},
+      {"text": "foreach x in list:", "is_correct": false}
+    ]
+  },
+  {
+    "category": "python",
+    "question": "Что выведет этот код?\n\nfor i in range(3):\n    print(i)\nprint('Done')",
+    "explanation": "Функция range(3) создаёт последовательность чисел от 0 до 2 🔁 Цикл for пройдётся по ним и выведет каждое. После завершения цикла выполнится print('Done'). Это как сказать: «Сделай три шага, потом скажи “Готово”». Результат будет 0, 1, 2, Done.",
+    "options": [
+      {"text": "0 1 2 Done", "is_correct": true},
+      {"text": "1 2 3 Done", "is_correct": false},
+      {"text": "Ошибка", "is_correct": false},
+      {"text": "None", "is_correct": false}
+    ]
+  },
+  {
+    "category": "python",
+    "question": "Как работает цикл while?",
+    "explanation": "Цикл while продолжается, пока условие истинно 🔄 То есть он проверяет условие перед каждой итерацией. Представь, что ты ждёшь автобус: пока его нет — продолжаешь ждать. Как только он приезжает — выходишь из цикла.",
+    "options": [
+      {"text": "Пока условие True", "is_correct": true},
+      {"text": "Выполняется один раз", "is_correct": false},
+      {"text": "Только если есть break", "is_correct": false},
+      {"text": "По индексам", "is_correct": false}
+    ]
+  },
+  {
+    "category": "python",
+    "question": "Что выведет этот код?\n\ni = 0\nwhile i < 3:\n    print(i)\n    i += 1",
+    "explanation": "Цикл while начнёт с i=0 и будет увеличивать её на 1, пока i меньше 3 📈 В результате будут выведены 0, 1, 2. Очень важно не забыть изменять переменную внутри цикла, иначе получится бесконечный цикл. Представь, что ты не вышел из автобуса — и едешь дальше 😂",
+    "options": [
+      {"text": "0 1 2", "is_correct": true},
+      {"text": "1 2 3", "is_correct": false},
+      {"text": "Ошибка", "is_correct": false},
+      {"text": "Бесконечно 0", "is_correct": false}
+    ]
+  },
+  {
+    "category": "python",
+    "question": "Как остановить цикл досрочно?",
+    "explanation": "Ключевое слово break — это как кнопка «стоп» для цикла 🛑 Иногда тебе нужно прервать выполнение, даже если условие ещё не стало ложным. Например, ты ищешь определённый элемент в списке и нашёл его — больше не нужно продолжать.",
+    "options": [
+      {"text": "break", "is_correct": true},
+      {"text": "stop", "is_correct": false},
+      {"text": "exit", "is_correct": false},
+      {"text": "continue", "is_correct": false}
+    ]
+  },
+  {
+    "category": "python",
+    "question": "Как пропустить итерацию?",
+    "explanation": "continue — это как «пропустить» текущий шаг и перейти к следующему 🚶‍♂️ Например, ты перебираешь числа, но хочешь пропустить все чётные. Тогда используй continue, и цикл сразу перейдёт к следующему числу без выполнения остального кода в теле.",
+    "options": [
+      {"text": "continue", "is_correct": true},
+      {"text": "skip", "is_correct": false},
+      {"text": "pass", "is_correct": false},
+      {"text": "ignore", "is_correct": false}
+    ]
+  },
+      {
+    "category": "python",
+    "question": "Что выведет код?\n\nfor i in range(2):\n    for j in range(2):\n        if i == j:\n            break\n    print(i, j)",
+    "explanation": "Это пример вложенного цикла с условием и break 🧩 В первом проходе i=0, j=0 → сработает break, и цикл прервётся. Во втором i=1, j снова станет 0 и 1 → на j=1 сработает break. Так что вывод будет: 0 0 и 1 1. Это как проверить пары координат и остановиться, когда они совпадают.",
+    "options": [
+      {"text": "0 0 и 1 1", "is_correct": true},
+      {"text": "0 0 и 1 0", "is_correct": false},
+      {"text": "Все пары", "is_correct": false},
+      {"text": "Ошибка", "is_correct": false}
+    ]
+  },
+
+  {
+    "category": "python",
+    "question": "Как получить индекс и элемент списка?",
+    "explanation": "Для этого идеально подходит функция `enumerate()` 🧠 Она возвращает пару (индекс, значение), что удобно при переборе списков. Представь, что ты нумеруешь гостей по порядку, чтобы знать, кто первый, кто второй и так далее.",
+    "options": [
+      {"text": "enumerate()", "is_correct": true},
+      {"text": "indexof()", "is_correct": false},
+      {"text": "range(len())", "is_correct": false},
+      {"text": "keys()", "is_correct": false}
+    ]
+  },
+  {
+    "category": "python",
+    "question": "Что выведет код?\n\nfor i in []:\n    print('Hi')\nprint('Done')",
+    "explanation": "Пустой список означает, что цикл не выполнится ни разу 🔄 Это как сказать: «Пройдись по пустому коридору» — ты просто пропускаешь его. Поэтому сразу выводится 'Done'. Очень важно помнить, что пустые коллекции не вызывают ошибок, а просто не запускают цикл.",
+    "options": [
+      {"text": "'Done'", "is_correct": true},
+      {"text": "'Hi'", "is_correct": false},
+      {"text": "'Hi' и 'Done'", "is_correct": false},
+      {"text": "Ошибка", "is_correct": false}
+    ]
+  },
+  {
+    "category": "python",
+    "question": "Какой цикл используется с итерируемыми объектами?",
+    "explanation": "Цикл `for` работает с любыми итерируемыми объектами: списками, строками, словарями, множествами и даже файлами 🧠 Он сам управляет итерацией, в отличие от `while`, где нужно контролировать условие вручную. Как будто у тебя есть робот-помощник, который всё сделает за тебя.",
+    "options": [
+      {"text": "for", "is_correct": true},
+      {"text": "while", "is_correct": false},
+      {"text": "loop", "is_correct": false},
+      {"text": "foreach", "is_correct": false}
+    ]
+  },
+  {
+    "category": "python",
+    "question": "Что делает else после цикла?",
+    "explanation": "Блок `else` после цикла выполняется, только если цикл завершился **не через `break`** 🤯 Это как сказать: «Если ты прошёл весь путь без остановок — получи награду». Если же ты вышел из цикла досрочно, блок `else` пропустится.",
+    "options": [
+      {"text": "Выполняется после цикла", "is_correct": true},
+      {"text": "Выполняется при break", "is_correct": false},
+      {"text": "Всегда выполняется", "is_correct": false},
+      {"text": "Не существует", "is_correct": false}
+    ]
+  },
+  {
+    "category": "python",
+    "question": "Как сделать бесконечный цикл?",
+    "explanation": "Цикл `while True` будет работать бесконечно, пока не произойдёт `break` 🔄 Такое бывает полезно, например, в серверах или меню программы, где нужно постоянно ожидать действия пользователя. Но будь осторожен — забудь про `break`, и твой скрипт зависнет.",
+    "options": [
+      {"text": "while True", "is_correct": true},
+      {"text": "for _ in range(1000)", "is_correct": false},
+      {"text": "loop:", "is_correct": false},
+      {"text": "while False", "is_correct": false}
+    ]
+  },
+  {
+    "category": "python",
+    "question": "Что делает pass в теле цикла?",
+    "explanation": "`pass` — это заглушка, которая ничего не делает 🤐 Иногда нужна, когда ты хочешь создать структуру цикла, но ещё не готов писать логику внутри. Это как нарисовать контур дома и решить: «Сначала построю фундамент, потом уже буду заполнять комнаты».",
+    "options": [
+      {"text": "Ничего не делает", "is_correct": true},
+      {"text": "Останавливает цикл", "is_correct": false},
+      {"text": "Продолжает итерацию", "is_correct": false},
+      {"text": "Вызывает ошибку", "is_correct": false}
+    ]
+  },
+      {
+    "category": "python",
+    "question": "Что выведет код?\n\ni = 0\nwhile i < 5:\n    i += 1\n    if i % 2 == 0:\n        continue\n    print(i, end=' ')",
+    "explanation": "Этот код увеличивает i, проверяет, чётное ли число, и если да — пропускает печать 🔄 В результате будут выведены только нечётные числа: 1 3 5. Это как пройти через числа, но говорить вслух только те, которые тебе подходят.",
+    "options": [
+      {"text": "1 3 5", "is_correct": true},
+      {"text": "2 4", "is_correct": false},
+      {"text": "1 2 3 4 5", "is_correct": false},
+      {"text": "Ошибка", "is_correct": false}
+    ]
+  }
+]

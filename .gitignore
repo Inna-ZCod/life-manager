@@ -38,3 +38,17 @@ Thumbs.db
 
 # База данных
 task_manager.db
+
+
+# Личные заметки и тесты
+console_ui.py
+main.py
+parser.py
+add_cards.py
+populate_cards.py
+project_journal.md
+database.py
+web.py
+
+# Веб-файлы
+/templates/
