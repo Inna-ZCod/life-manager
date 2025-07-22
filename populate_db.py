@@ -9,6 +9,24 @@ from datetime import datetime
 def get_db():
     return sqlite3.connect('task_manager.db')
 
+def clear_tables():
+    """Очищает все таблицы перед новой загрузкой"""
+    conn = get_db()
+    cursor = conn.cursor()
+
+    cursor.execute("DELETE FROM card_options")
+    cursor.execute("DELETE FROM learning_cards")
+    cursor.execute("DELETE FROM card_reviews")
+
+    # Очищаем счётчики ID
+    cursor.execute("DELETE FROM sqlite_sequence WHERE name='learning_cards'")
+    cursor.execute("DELETE FROM sqlite_sequence WHERE name='card_options'")
+    cursor.execute("DELETE FROM sqlite_sequence WHERE name='card_reviews'")
+
+    conn.commit()
+    conn.close()
+    print("🗑️ Все таблицы очищены")
+
 def load_json_file(filename):
     with open(filename, "r", encoding="utf-8") as f:
         return json.load(f)
