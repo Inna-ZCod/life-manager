@@ -41,7 +41,7 @@ def populate_cards(cards):
         existing = cursor.fetchone()
 
         if existing:
-            print(f"🔁 Уже есть карточка: {card['question']}")
+        #    print(f"🔁 Уже есть карточка: {card['question']}")
             continue
 
         # Добавляем карточку
