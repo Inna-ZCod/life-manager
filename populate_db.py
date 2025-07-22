@@ -36,12 +36,28 @@ def populate_cards(cards):
     cursor = conn.cursor()
 
     for card in cards:
-        # Проверяем, существует ли такая же карточка
+        # Проверяем, что карточка — это словарь и содержит нужные поля
+        if not isinstance(card, dict):
+            print(f"⚠️ Пропущен(а) некорректный объект: {card}")
+            continue
+
+        # Проверяем обязательные поля
+        if "question" not in card:
+            print(f"❌ Пропущена карточка: нет поля 'question'")
+            continue
+
+        if "category" not in card:
+            print(f"❌ Карточка без категории: '{card['question'][:50]}...' — будет установлена 'unknown'")
+            card["category"] = "unknown"  # или "python", если знаешь контекст
+
+        if "explanation" not in card:
+            card["explanation"] = "Нет объяснения."
+
+        # Проверяем дубликаты
         cursor.execute("SELECT id FROM learning_cards WHERE question = ?", (card["question"],))
         existing = cursor.fetchone()
-
         if existing:
-        #    print(f"🔁 Уже есть карточка: {card['question']}")
+            print(f"🔁 Уже есть карточка: {card['question']}")
             continue
 
         # Добавляем карточку
@@ -52,7 +68,7 @@ def populate_cards(cards):
         ''', (
             card["category"],
             card["question"],
-            card.get("explanation", "")
+            card["explanation"]
         ))
 
         card_id = cursor.lastrowid
