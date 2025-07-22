@@ -158,12 +158,23 @@ async def handle_answer(update: Update, context: ContextTypes.DEFAULT_TYPE):
     context.chat_data["session_stats"] = stats
 
     explanation = get_explanation(int(card_id))
-    if is_correct:
-        msg = f"✅ Верно! Ваш ответ: '{user_answer}'\n\n{explanation}"
-    else:
-        msg = f"❌ Неверно. Правильный ответ: '{correct_answer}'\n\n{explanation}"
 
-    await query.edit_message_text(msg, reply_markup=get_continue_button())
+    # Формируем новое сообщение: оставляем старый текст + добавляем результат
+    original_text = query.message.text  # Это текущий вопрос и варианты
+    if is_correct:
+        result_text = f"\n\n✅ <b>Верно!</b> Ваш ответ: '<i>{user_answer}</i>'"
+    else:
+        result_text = f"\n\n❌ <b>Неверно.</b> Правильный ответ: '<i>{correct_answer}</i>'"
+
+    # Добавляем объяснение
+    full_text = f"{original_text}{result_text}\n\n{explanation}"
+
+    # Редактируем только текст, оставляя те же кнопки (или меняем на "Продолжить")
+    await query.edit_message_text(
+        text=full_text,
+        parse_mode='HTML',
+        reply_markup=get_continue_button()
+    )
 
     # Увеличиваем processed_cards
     count = context.chat_data.get("processed_cards", 0)
